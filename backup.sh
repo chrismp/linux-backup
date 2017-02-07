@@ -2,8 +2,6 @@
 NOW=$(date +"%Y-%m-%d-%H%M%S")
 FILE="backup.$NOW.tar.gz"
 BACKUP_DIRECTORY="/media/chris/Seagate Expansion Drive1/DebianBackups"
-BACKUP_FILE="$BACKUP_DIRECTORY/$FILE $DIRS_TO_BACKUP"
-DIRS_TO_BACKUP="/home /media/chris/SeaGate-HDD-3TB/Dropbox/"
 LOG_DIR="$BACKUP_DIRECTORY/Logs"
 BACKUP_LOG="$LOG_DIR/backup-$NOW.log"
 
@@ -16,7 +14,7 @@ mkdir -p "$LOG_DIR"
 # http://superuser.com/questions/438450/which-files-do-i-need-to-backup-to-keep-my-linux-user-settings
 # http://unix.stackexchange.com/questions/1067/what-directories-do-i-need-to-back-up
 # leaving out -v from tar to reduce output so backup runs faster
-nohup tar -vcpzf "$BACKUP_FILE"  > "$BACKUP_LOG" 2>&1 &
+nohup tar -vcpzf "$BACKUP_DIRECTORY/$FILE" /home /media/chris/SeaGate-HDD-3TB/Dropbox > "$LOG_DIR/backup-$NOW.log" 2>&1 &
 
 # Extraction
 # http://stackoverflow.com/questions/13707429/decompress-gzip-file-to-specific-directory
