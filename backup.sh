@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 NOW=$(date +"%Y-%m-%d-%H%M%S")
 FILE="backup.$NOW.tar.gz"
 BACKUP_DIRECTORY="/media/chris/Seagate Expansion Drive1/DebianBackups"
