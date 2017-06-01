@@ -4,7 +4,8 @@ set -e
 
 NOW=$(date +"%Y-%m-%d-%H%M%S")
 FILE="backup.$NOW.tar.gz"
-BACKUP_DIRECTORY="/media/chris/Seagate-Expansion-Drive/DebianBackups"
+BACKUP_HDD="Seagate-Expansion-Drive"
+BACKUP_DIRECTORY="/media/chris/$BACKUP_HDD/DebianBackups"
 LOG_DIR="$BACKUP_DIRECTORY/Logs"
 BACKUP_LOG="$LOG_DIR/backup-$NOW.log"
 
@@ -17,7 +18,8 @@ mkdir -p "$LOG_DIR"
 # http://superuser.com/questions/438450/which-files-do-i-need-to-backup-to-keep-my-linux-user-settings
 # http://unix.stackexchange.com/questions/1067/what-directories-do-i-need-to-back-up
 # leaving out -v from tar to reduce output so backup runs faster
-DROPBOX_DIR="/media/chris/SeaGate-HDD-3TB/Dropbox"
+EXTERNAL_DRIVE="SeaGate-HDD-3TB"
+DROPBOX_DIR="/media/chris/$EXTERNAL_DRIVE/Dropbox"
 nohup tar -vcpzf "$BACKUP_DIRECTORY/$FILE" /home  > "$LOG_DIR/backup-$NOW.log" 2>&1 &
 
 # Extraction
